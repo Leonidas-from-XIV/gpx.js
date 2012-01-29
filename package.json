@@ -1,0 +1,26 @@
+{
+  "name" : "gpx.js",
+  "description" : "A GPX parser for client and server-side JavaScript",
+  "keywords" : ["xml", "gpx", "gps", "parser"],
+  "homepage" : "https://github.com/Leonidas-from-XIV/gpx.js",
+  "version" : "0.0.1",
+  "author" : "Marek Kubica <marek@xivilization.net> (http://xivilization.net)",
+  "contributors" : [
+  ],
+  "main" : "./lib/gpx",
+  "directories" : {
+    "lib": "./lib"
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/Leonidas-from-XIV/gpx.js.git"
+  },
+  "dependencies" : {
+    "jsdom" : ">=0.2.10"
+  },
+  "devDependencies" : {
+    "coffee-script" : ">=1.2.0",
+    "zap" : ">=0.2.4-1",
+    "docco" : ">=0.3.0"
+  }
+}
