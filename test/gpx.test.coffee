@@ -11,5 +11,6 @@ module.exports =
     # same point, different height
     assert.equal 0, gpx.distance2d a, a_high
     # different points
-    assert.equal 23, gpx.distance2d a, b
+    distance = gpx.distance2d a, b
+    assert.fail distance, 75.5, "distance failure too large", "=" if Math.abs(75.5 - distance) > 0.01
     test.finish()
