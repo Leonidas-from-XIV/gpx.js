@@ -1,5 +1,7 @@
 # earth radius in km
-R = 6371
+# R = 6371
+# trying to use equatorial radius instad for now
+R = 6378.1
 
 to_rad = (angle) ->
   angle * Math.PI / 180
