@@ -1,3 +1,4 @@
+jsdom = require 'jsdom'
 # earth radius in km
 R = 6371
 # trying to use equatorial radius instad for now
@@ -10,8 +11,10 @@ class exports.GPX
   constructor: ->
     undefined
 
-  parseString: (xml) =>
-    []
+  parseString: (xml, cb) =>
+    jsdom.env xml.toString(), (err, window) ->
+      cb undefined, [1,2,3,4]
+      console.log window
 
 class exports.Point
   constructor: (@lat, @lon, @ele) ->

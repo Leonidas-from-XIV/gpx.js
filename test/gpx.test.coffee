@@ -43,7 +43,6 @@ module.exports =
     fileName = path.join __dirname, '/fixtures/simple.gpx'
     fs.readFile fileName, (err, data)  ->
       parser = new gpx.GPX
-      results = parser.parseString data
       e = [
         new gpx.Point(35.14662, 136.96714, 84),
         new gpx.Point(35.14665, 136.9671, 84),
@@ -51,7 +50,8 @@ module.exports =
         new gpx.Point(35.14672, 136.967, 83.2),
         new gpx.Point(35.14675, 136.96694, 83.7)
       ]
-      for i in [0...e.length]
-        assert.deepEqual results[i], e[i]
-    test.finish()
+      parser.parseString data, (err, results) ->
+        for i in [0...e.length]
+          assert.deepEqual results[i], e[i]
+        test.finish()
   
