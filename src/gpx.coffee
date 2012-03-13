@@ -7,8 +7,11 @@ to_rad = (angle) ->
   angle * Math.PI / 180
 
 class exports.GPX
-  constructor: (string) ->
+  constructor: ->
     undefined
+
+  parseString: (xml) =>
+    []
 
 class exports.Point
   constructor: (@lat, @lon, @ele) ->

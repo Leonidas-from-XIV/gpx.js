@@ -39,7 +39,7 @@ module.exports =
     assertSimilar distance, true_distance, 0.01
     test.finish()
     
-  'parse gpx': (test) ->
+  'parse GPX': (test) ->
     fileName = path.join __dirname, '/fixtures/simple.gpx'
     fs.readFile fileName, (err, data)  ->
       parser = new gpx.GPX
@@ -51,7 +51,7 @@ module.exports =
         new gpx.Point(35.14672, 136.967, 83.2),
         new gpx.Point(35.14675, 136.96694, 83.7)
       ]
-      for i in e.length
+      for i in [0...e.length]
         assert.deepEqual results[i], e[i]
     test.finish()
   
