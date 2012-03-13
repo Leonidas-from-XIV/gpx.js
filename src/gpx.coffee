@@ -13,8 +13,15 @@ class exports.GPX
 
   parseString: (xml, cb) =>
     jsdom.env xml.toString(), (err, window) ->
-      cb undefined, [1,2,3,4]
-      console.log window
+      trkpts = window.document.getElementsByTagName 'trkpt'
+      result = []
+      for item in trkpts
+        lon = parseFloat item.getAttribute('lon')
+        lat = parseFloat item.getAttribute('lat')
+        elevation = item.getElementsByTagName('ele')[0]
+        ele = parseFloat elevation.firstChild.nodeValue
+        result.push {lat: lat, lon: lon, ele: ele}
+      cb undefined, result
 
 class exports.Point
   constructor: (@lat, @lon, @ele) ->
