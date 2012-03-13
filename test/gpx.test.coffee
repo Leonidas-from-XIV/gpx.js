@@ -16,7 +16,7 @@ module.exports =
     test.finish()
   'test distance in 3D': (test) ->
     a = new gpx.Point 10, 20, 10
-    a_high = gpx.Point 10, 20, 30
+    a_high = new gpx.Point 10, 20, 30
     b = new gpx.Point 15, 25, 10
     c = new gpx.Point 20, 30, 20
     #same point
