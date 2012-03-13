@@ -6,6 +6,7 @@
   "version" : "0.0.1",
   "author" : "Marek Kubica <marek@xivilization.net> (http://xivilization.net)",
   "contributors" : [
+    "Joschka Fischer <fischer.joschka@googlemail.com>"
   ],
   "main" : "./lib/gpx",
   "directories" : {
