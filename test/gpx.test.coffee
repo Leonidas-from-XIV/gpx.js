@@ -14,3 +14,19 @@ module.exports =
     distance = gpx.distance2d a, b
     assert.fail distance, 75.5, "distance failure too large", "=" if Math.abs(75.5 - distance) > 0.01
     test.finish()
+  'test distance in 3D': (test) ->
+    a = new gpx.Point 10, 20, 10
+    a_high = gpx.Point 10, 20, 30
+    b = new gpx.Point 15, 25, 10
+    c = new gpx.Point 20, 30, 20
+    #same point
+    assert.equal 0, gpx.distance3d a, a
+    #same point, different height
+    assert.equal (a_high - a), gpx.distance3d a, a_high
+    #different points, same height
+    assert.equal (gpx.distance2d a, b), gpx.distance3d a, b
+    #different points, different height
+    distance = gpx.distance3d a, c
+    true_distance = Math.sqrt(300)
+    assert.fail distance, true_distance, "distance failure too large", "=" if Math.abs(true_distance - distance) > 0.01
+    test.finish()
