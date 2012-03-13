@@ -22,7 +22,7 @@ module.exports =
     #same point
     assert.equal 0, gpx.distance3d a, a
     #same point, different height
-    assert.equal (a_high - a), gpx.distance3d a, a_high
+    assert.equal (a_high.ele - a.ele), gpx.distance3d a, a_high
     #different points, same height
     assert.equal (gpx.distance2d a, b), gpx.distance3d a, b
     #different points, different height
