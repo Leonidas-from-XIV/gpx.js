@@ -29,8 +29,8 @@ module.exports =
     # different points, different height
     distance = gpx.distance3d a, c
     # thx interwebz
-    dist2d = 1545
+    dist2d = gpx.distance2d a, c
     # thx pythagoras
-    true_distance = Math.sqrt(dist2d*dist2d + 10*10)
+    true_distance = Math.sqrt(dist2d*dist2d + (c.ele - a.ele) * (c.ele - a.ele))
     assert.fail distance, true_distance, "distance failure too large", "=" if Math.abs(true_distance - distance) > 0.01
     test.finish()
