@@ -20,15 +20,17 @@ module.exports =
     a_high = new gpx.Point 10, 20, 30
     b = new gpx.Point 15, 25, 10
     c = new gpx.Point 20, 30, 20
-    #same point
+    # same point
     assert.equal 0, gpx.distance3d a, a
-    #same point, different height
+    # same point, different height
     assert.equal (a_high.ele - a.ele), gpx.distance3d a, a_high
-    #different points, same height
+    # different points, same height
     assert.equal (gpx.distance2d a, b), gpx.distance3d a, b
-    #different points, different height
+    # different points, different height
     distance = gpx.distance3d a, c
-    dist2d = 1545 #thx interwebz
-    true_distance = Math.sqrt(dist2d*dist2d + 10*10) #thx pythagoras
+    # thx interwebz
+    dist2d = 1545
+    # thx pythagoras
+    true_distance = Math.sqrt(dist2d*dist2d + 10*10)
     assert.fail distance, true_distance, "distance failure too large", "=" if Math.abs(true_distance - distance) > 0.01
     test.finish()

@@ -23,3 +23,9 @@ exports.distance2d = (a, b) ->
     Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2)
   c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
   R * c
+
+exports.distance3d = (a, b) ->
+  planar = exports.distance2d a, b
+  height = Math.abs a.ele - b.ele
+  # wacky CoffeeScript precedence rules
+  Math.sqrt Math.pow(planar, 2) + Math.pow height, 2
