@@ -1,6 +1,9 @@
 gpx = require '../lib/gpx'
 assert = require 'assert'
 
+assertSimilar = (expected, got, tolerance) ->
+  assert.fail expected, got, "deviation too large", "=" if Math.abs(expected - got) > tolerance
+
 module.exports =
   'test distance in 2D': (test) ->
     a = new gpx.Point 23, 42, 0
