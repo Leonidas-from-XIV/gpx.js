@@ -11,7 +11,7 @@ class exports.GPX
     undefined
 
 class exports.Point
-  constructor: (@lon, @lat, @ele) ->
+  constructor: (@lat, @lon, @ele) ->
 
 exports.distance2d = (a, b) ->
   # haversine
