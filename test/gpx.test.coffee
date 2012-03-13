@@ -15,7 +15,7 @@ module.exports =
     assert.equal 0, gpx.distance2d a, a_high
     # different points
     distance = gpx.distance2d a, b
-    assert.fail distance, 75.5, "distance failure too large", "=" if Math.abs(75.5 - distance) > 0.01
+    assertSimilar distance, 75.5, 0.01
     test.finish()
     
   'test distance in 3D': (test) ->
@@ -31,9 +31,8 @@ module.exports =
     assert.equal (gpx.distance2d a, b), gpx.distance3d a, b
     # different points, different height
     distance = gpx.distance3d a, c
-    # thx interwebz
     dist2d = gpx.distance2d a, c
     # thx pythagoras
     true_distance = Math.sqrt(dist2d*dist2d + (c.ele - a.ele) * (c.ele - a.ele))
-    assert.fail distance, true_distance, "distance failure too large", "=" if Math.abs(true_distance - distance) > 0.01
+    assertSimilar distance, true_distance, 0.01
     test.finish()
