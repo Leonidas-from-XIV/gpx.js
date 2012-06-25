@@ -17,11 +17,13 @@
     "url" : "https://github.com/Leonidas-from-XIV/gpx.js.git"
   },
   "dependencies" : {
-    "jsdom" : ">=0.2.10"
+    "cheerio" : ">=0.8.3",
+    "moment" : ">=1.6.2"
   },
   "devDependencies" : {
     "coffee-script" : ">=1.2.0",
     "zap" : ">=0.2.4-1",
-    "docco" : ">=0.3.0"
+    "docco" : ">=0.3.0",
+    "browserify" : ">=1.13.3"
   }
 }
