@@ -1,4 +1,4 @@
-jsdom = require 'jsdom'
+cheerio = require 'cheerio'
 # earth radius in km
 R = 6371
 # trying to use equatorial radius instad for now
@@ -12,16 +12,15 @@ class exports.GPX
     undefined
 
   parseString: (xml, cb) =>
-    jsdom.env xml.toString(), (err, window) ->
-      trkpts = window.document.getElementsByTagName 'trkpt'
-      result = []
-      for item in trkpts
-        lon = parseFloat item.getAttribute('lon')
-        lat = parseFloat item.getAttribute('lat')
-        elevation = item.getElementsByTagName('ele')[0]
-        ele = parseFloat elevation.firstChild.nodeValue
-        result.push {lat: lat, lon: lon, ele: ele}
-      cb undefined, result
+    $ = cheerio.load xml.toString()
+    result = []
+    trkpts = $('trkpt').each (i, item) ->
+      lon = parseFloat $(item).attr 'lon'
+      lat = parseFloat $(item).attr 'lat'
+      elevation = $(item).find('ele')
+      ele = parseFloat $(elevation).text()
+      result.push {lat: lat, lon: lon, ele: ele}
+    cb undefined, result
 
 class exports.Point
   constructor: (@lat, @lon, @ele) ->
